@@ -6,6 +6,9 @@ endif()
 
 project(gcompris-qt C CXX)
 
+# attempt for vc redist
+include(InstallRequiredSystemLibraries)
+
 # Set c++11 support
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
