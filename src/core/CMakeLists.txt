@@ -229,7 +229,7 @@ if(WIN32)
     install(FILES ${Qt5_DIR}/../../../bin/libGLESv2.dll DESTINATION bin)
     install(FILES ${Qt5_DIR}/../../../../../Tools/QtCreator/bin/d3dcompiler_47.dll DESTINATION bin)
     if(NOT MINGW)
-        message(STATUS "runtime libs: ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}")
+        # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
         install(FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION bin)
         install(FILES ${VCREDIST_DIR}/libgcc_s_dw2-1.dll DESTINATION bin)
     endif()
@@ -283,7 +283,7 @@ elseif(WIN32)
     # installation-folder and run it with NSis.
     if(vcredist_name)
       message(STATUS "Adding " ${vcredist_name} " to Install")
-      install(PROGRAMS ${MSVC_REDIST} COMPONENT System DESTINATION bin)
+      install(PROGRAMS ${MSVC_REDIST} DESTINATION bin)
       # Add /q to make the vcredist install silent
       set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "ExecWait '\\\"$INSTDIR\\\\bin\\\\${vcredist_name}\\\" /q'")
     endif(vcredist_name)
