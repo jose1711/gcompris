@@ -449,7 +449,7 @@ else()
     ExternalProject_Add(qml_box2d
       DOWNLOAD_COMMAND ""
       SOURCE_DIR ${_box2d_source_dir}
-      CONFIGURE_COMMAND ${_qmake_program} -spec win32-msvc2015 -tp vc ${_box2d_source_dir}/box2d.pro
+      CONFIGURE_COMMAND "${_qmake_program} ${_qmake_options} ${_box2d_source_dir}/box2d.pro"
       BUILD_COMMAND ${CMAKE_MAKE_PROGRAM}
       INSTALL_DIR ${_box2d_install_dir}
       INSTALL_COMMAND cp ${_box2d_library_dir}${_box2d_library_file} ${_box2d_source_dir}/qmldir ${_box2d_install_dir}
