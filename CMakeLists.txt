@@ -441,9 +441,10 @@ else()
     endif()
 
     # for visual studio, we need to create a vcxproj
-    set(_qmake_options "")
     if(WIN32 AND NOT MINGW)
       set(_qmake_options "-spec win32-msvc2015 -tp vc")
+    else()
+      set(_qmake_options "")
     endif()
     ExternalProject_Add(qml_box2d
       DOWNLOAD_COMMAND ""
