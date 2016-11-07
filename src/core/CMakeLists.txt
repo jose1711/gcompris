@@ -284,9 +284,9 @@ elseif(WIN32)
     # installation-folder and run it with NSis.
     if(vcredist_name)
       message(STATUS "Adding " ${vcredist_name} " to Install")
-      install(PROGRAMS ${MSVC_REDIST} DESTINATION bin)
+      #install(PROGRAMS ${MSVC_REDIST} DESTINATION bin)
       # Add /q to make the vcredist install silent
-      set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "ExecWait '\\\"$INSTDIR\\\\bin\\\\${vcredist_name}\\\" /q'")
+      #set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "ExecWait '\\\"$INSTDIR\\\\bin\\\\${vcredist_name}\\\" /q'")
     endif(vcredist_name)
   endif(NOT MINGW)
 elseif(SAILFISHOS)
