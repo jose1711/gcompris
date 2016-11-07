@@ -7,6 +7,7 @@ endif()
 project(gcompris-qt C CXX)
 
 # attempt for vc redist
+set(CMAKE_INSTALL_UCRT_LIBRARIES 1)
 include(InstallRequiredSystemLibraries)
 
 # Set c++11 support

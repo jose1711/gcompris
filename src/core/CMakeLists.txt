@@ -230,6 +230,7 @@ if(WIN32)
     install(FILES ${Qt5_DIR}/../../../../../Tools/QtCreator/bin/d3dcompiler_47.dll DESTINATION bin)
     if(NOT MINGW)
         # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
+        message(STATUS "dll " ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} " to install")
         install(FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION bin)
         install(FILES ${VCREDIST_DIR}/libgcc_s_dw2-1.dll DESTINATION bin)
     endif()
