@@ -74,6 +74,11 @@ else()
   qt5_use_modules(${GCOMPRIS_EXECUTABLE_NAME} Qml Quick Gui Multimedia Network XmlPatterns Svg Xml Sensors Core)
 endif()
 
+if(CMAKE_HOST_WIN32)
+  # Remove the console for windows
+  set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS -Wl,-subsystem,windows)
+endif()
+
 GCOMPRIS_ADD_RCC(core *.qml *.js resource/*.${COMPRESSED_AUDIO} resource/*.gif resource/*.png resource/*.svg resource/bonus/* resource/sounds/* resource/fonts/* qmldir)
 
 # Installation
@@ -219,7 +224,6 @@ if(BUILD_STANDALONE)
 endif()
 
 if(WIN32)
-  set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
     set(VCREDIST_DIR "" CACHE PATH "Path to vcredist dlls")
 # install libEGL.dll, libGLESv2.dll, d3dcompiler_47.dll from Qt installation. Not sure if there is a clean way to get them...
 # Qt5_Dir is like C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/cmake/Qt5
