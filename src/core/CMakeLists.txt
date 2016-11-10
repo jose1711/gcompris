@@ -219,6 +219,7 @@ if(BUILD_STANDALONE)
 endif()
 
 if(WIN32)
+  set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
     set(VCREDIST_DIR "" CACHE PATH "Path to vcredist dlls")
 # install libEGL.dll, libGLESv2.dll, d3dcompiler_47.dll from Qt installation. Not sure if there is a clean way to get them...
 # Qt5_Dir is like C:/Qt/Qt5.5.1/5.5/mingw492_32/lib/cmake/Qt5
@@ -271,26 +272,6 @@ if(APPLE)
   set(CPACK_DMG_BACKGROUND_IMAGE "${GCOMPRIS_RESOURCES}/dmg_background.png")
 elseif(WIN32)
   set(CPACK_GENERATOR "NSIS")
-  if(NOT MINGW)
-    if(CMAKE_CL_64)
-      set(CMAKE_MSVC_ARCH x64)
-    else(CMAKE_CL_64)
-      set(CMAKE_MSVC_ARCH x86)
-    endif(CMAKE_CL_64)
-    # Try and find the vcredist_XX.exe, normally this is in the WindowsSDK folder.
-    find_program(MSVC_REDIST NAMES VC/vcredist_${CMAKE_MSVC_ARCH}.exe
-      PATHS
-      "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows\\v7.1;InstallationFolder]/Redist/")
-    get_filename_component(vcredist_name "${MSVC_REDIST}" NAME)
-    # If we found a vcredist-package, we add it simply to the
-    # installation-folder and run it with NSis.
-    if(vcredist_name)
-      message(STATUS "Adding " ${vcredist_name} " to Install")
-      #install(PROGRAMS ${MSVC_REDIST} DESTINATION bin)
-      # Add /q to make the vcredist install silent
-      #set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "ExecWait '\\\"$INSTDIR\\\\bin\\\\${vcredist_name}\\\" /q'")
-    endif(vcredist_name)
-  endif(NOT MINGW)
 elseif(SAILFISHOS)
   configure_file(${PROJECT_SOURCE_DIR}/platforms/sailfishOS/harbour-gcompris-qt.spec.cmake ${CMAKE_BINARY_DIR}/harbour-gcompris-qt.spec @ONLY)
 
