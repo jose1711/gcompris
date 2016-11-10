@@ -234,7 +234,7 @@ if(WIN32)
     get_target_property(GLES_LIB_PATH Qt5::Gui_GLESv2 IMPORTED_LOCATION_RELEASE)
     TARGET_LINK_LIBRARIES(${GCOMPRIS_EXECUTABLE_NAME} Qt5::Gui_EGL)
     TARGET_LINK_LIBRARIES(${GCOMPRIS_EXECUTABLE_NAME} Qt5::Gui_GLESv2)
-    message(STATUS "EGL: " ${EGL_LIB_PATH} ", GLES: " ${GLES_LIB_PATH})
+    message(STATUS "EGL: " Qt5::Gui_EGL ", GLES: " Qt5::Gui_GLESv2)
     if(NOT MINGW)
         # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
         message(STATUS "dll " ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} " to install")
