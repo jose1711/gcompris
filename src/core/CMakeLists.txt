@@ -79,6 +79,7 @@ if(CMAKE_HOST_WIN32)
   set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS -Wl,-subsystem,console)
   set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:CONSOLE")
    set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:CONSOLE")
+   set_target_properties(WindowApplicationExample PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
  endif()
 
 GCOMPRIS_ADD_RCC(core *.qml *.js resource/*.${COMPRESSED_AUDIO} resource/*.gif resource/*.png resource/*.svg resource/bonus/* resource/sounds/* resource/fonts/* qmldir)
