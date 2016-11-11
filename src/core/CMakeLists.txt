@@ -74,10 +74,10 @@ else()
   qt5_use_modules(${GCOMPRIS_EXECUTABLE_NAME} Qml Quick Gui Multimedia Network XmlPatterns Svg Xml Sensors Core)
 endif()
 
-if(CMAKE_HOST_WIN32)
-  # Add the console for windows
-  set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
- endif()
+# For debug purpose, how to add the console for windows
+#if(CMAKE_HOST_WIN32)
+#set_target_properties(${GCOMPRIS_EXECUTABLE_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
+#endif()
 
 GCOMPRIS_ADD_RCC(core *.qml *.js resource/*.${COMPRESSED_AUDIO} resource/*.gif resource/*.png resource/*.svg resource/bonus/* resource/sounds/* resource/fonts/* qmldir)
 
@@ -234,11 +234,11 @@ if(WIN32)
     install(FILES ${Qt5_DIR}/../../../bin/libEGL.dll DESTINATION bin)
     install(FILES ${Qt5_DIR}/../../../bin/libGLESv2.dll DESTINATION bin)
     install(FILES ${Qt5_DIR}/../../../bin/d3dcompiler_47.dll DESTINATION bin)
-    target_link_libraries(${GCOMPRIS_EXECUTABLE_NAME} ${Qt5_DIR}/../../libEGL.lib)
-    target_link_libraries(${GCOMPRIS_EXECUTABLE_NAME} ${Qt5_DIR}/../../libGLESv2.lib)
     if(NOT MINGW)
-        # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
+        target_link_libraries(${GCOMPRIS_EXECUTABLE_NAME} ${Qt5_DIR}/../../libEGL.lib)
+        target_link_libraries(${GCOMPRIS_EXECUTABLE_NAME} ${Qt5_DIR}/../../libGLESv2.lib)
         install(FILES ${Qt5_DIR}/../../../bin/opengl32sw.dll DESTINATION bin)
+        # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
         install(FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION bin)
     endif()
 endif()
