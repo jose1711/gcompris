@@ -245,6 +245,7 @@ if(WIN32)
     if(NOT MINGW)
         # CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS contains visual c++ libraries
         #message(STATUS "dll " ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} " to install")
+        install(FILES ${Qt5_DIR}/../../../bin/opengl32sw.dll DESTINATION bin)
         install(FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS} DESTINATION bin)
     endif()
 endif()
