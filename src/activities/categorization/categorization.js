@@ -33,7 +33,7 @@ var items
 var currentLevel = 1
 var numberOfLevel
 var index 
-var categoriesCount = 6;
+var categoriesCount
 var imagesData = []
 var categoriesData = []
 var boardsUrl
@@ -46,6 +46,10 @@ function init(items_,boardsUrl_) {
 }
 
 function start() {
+    if(items.demoVersion)
+        categoriesCount = 18
+    else
+        categoriesCount = 6
     categoriesData = []
     items.categoryReview.stop()
     var categoriesFilename;

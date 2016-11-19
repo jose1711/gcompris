@@ -100,7 +100,6 @@ Item {
 
         Flow {
             id: options
-            y: instructions.height
             spacing: 0.012 * middleScreen.width
             anchors {
                 left: leftScreen.right

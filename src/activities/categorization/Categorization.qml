@@ -67,6 +67,7 @@ ActivityBase {
             property bool categoryImageChecked: (mode === "easy")
             property bool scoreChecked: (mode === "easy" || mode === "medium")
             property bool iAmReadyChecked: (mode === "expert")
+            property bool demoVersion:  (DownloadManager.haveLocalResource(ApplicationSettings.wordset)) ? true : false
             property var details
         }
 
@@ -166,7 +167,7 @@ ActivityBase {
             id: bar
             content: menuScreen.started ? withConfig : withoutConfig
             property BarEnumContent withConfig: BarEnumContent { value: help | home | config }
-            property BarEnumContent withoutConfig: BarEnumContent { value: help | home | level }
+            property BarEnumContent withoutConfig: BarEnumContent { value: home | level }
             onPreviousLevelClicked: Activity.previousLevel()
             onNextLevelClicked: Activity.nextLevel()
             onHelpClicked: {
