@@ -108,10 +108,6 @@ int main(int argc, char *argv[])
     // Disable it because we already support HDPI display natively
     qunsetenv("QT_DEVICE_PIXEL_RATIO");
 
-#if defined(Q_OS_WIN)
-    qputenv("QT_ANGLE_PLATFORM", "warp");
-#endif
-
     QApplication app(argc, argv);
     app.setOrganizationName("KDE");
     app.setApplicationName(GCOMPRIS_APPLICATION_NAME);
